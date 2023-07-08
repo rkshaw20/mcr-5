@@ -57,9 +57,9 @@ const RestaurantReview = () => {
       revName: 'Raj',
       pp: 'https://res.cloudinary.com/dn5zs5sqx/image/upload/v1687185484/FhNGqSr__400x400_fnkcno.jpg',
     };
-    // selectedRestaurant.averageRating =
-    //   selectedRestaurant.ratings.reduce((acc, curr) => acc + curr.rating, 0) /
-    //   selectedRestaurant.ratings.length;
+    selectedRestaurant.averageRating =
+      selectedRestaurant.ratings.reduce((acc, curr) => acc + curr.rating, 0) /
+      selectedRestaurant.ratings.length;
 
     selectedRestaurant.ratings.push(review);
     onClose();
