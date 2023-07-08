@@ -12,22 +12,19 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './Home';
+import Home from './pages/Home';
+import RecipieDetails from './pages/RecipieDetails';
 
 
 const router = createBrowserRouter([
 
   {
     path:'/',element:<Home/>
+  },
+  {
+    path:'/:itemId' , element:<RecipieDetails/>
   }
-  // {
-  //   path: '/',
-  //   element: <RootLayout />,
-  //   children: [
-  //     { index: true, element: <Home /> },
-  //     { path: '/:postDeId', element: <PostDetails /> },
-  //   ],
-  // },
+
 ]);
 function App() {
   return (
