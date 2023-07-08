@@ -51,13 +51,15 @@ const RestaurantReview = () => {
   };
 
   const handleModalSubmit = () => {
-    console.log(inputValue);
     const review = {
       rating: inputValue.rating,
       comment: inputValue.comment,
       revName: 'Raj',
       pp: 'https://res.cloudinary.com/dn5zs5sqx/image/upload/v1687185484/FhNGqSr__400x400_fnkcno.jpg',
     };
+    // selectedRestaurant.averageRating =
+    //   selectedRestaurant.ratings.reduce((acc, curr) => acc + curr.rating, 0) /
+    //   selectedRestaurant.ratings.length;
 
     selectedRestaurant.ratings.push(review);
     onClose();
@@ -76,10 +78,10 @@ const RestaurantReview = () => {
       <Link as={ReachLink} to="/">
         <Icon as={BiArrowBack} fontSize="3xl" />
       </Link>
-      <Flex alignItems="center">
+      <Flex alignItems="center" w="full" justifyContent="center">
         <Flex flexDir="column">
           <Heading>{selectedRestaurant.name}</Heading>
-          <Flex gap={4}>
+          <Flex gap={3}>
             {selectedRestaurant?.menu.map(({ name, i }) => (
               <Text key={i}>{name}</Text>
             ))}
@@ -88,7 +90,7 @@ const RestaurantReview = () => {
           <Text>Average Rating: {selectedRestaurant.averageRating}</Text>
           <Divider />
         </Flex>
-        <Button bgColor="red.400" onClick={() => onOpen()}>
+        <Button m={1} bgColor="red.400" onClick={() => onOpen()}>
           Add Review
         </Button>
       </Flex>
@@ -133,12 +135,12 @@ const RestaurantReview = () => {
         </ModalContent>
       </Modal>
 
-      <Flex flexDir="column" mt="1rem">
+      <Flex flexDir="column" mt="1rem" alignItems="center">
         <Text fontWeight="bold">Reviews</Text>
         <Flex flexDir="column" maxW="600px" gap={4}>
           {selectedRestaurant.ratings.map((rating, i) => {
             return (
-              <Flex justifyContent="space-between" key={i}>
+              <Flex justifyContent="space-between" key={i} w="500px">
                 <Flex flexDir="column">
                   <Flex gap={2}>
                     <Avatar src={rating.pp} name={rating.revName} />
