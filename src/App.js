@@ -1,19 +1,11 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
-import RecipieDetails from './pages/RecipieDetails';
+import RestaurantReview from './pages/RestaurantReview';
 
 
 const router = createBrowserRouter([
@@ -22,7 +14,7 @@ const router = createBrowserRouter([
     path:'/',element:<Home/>
   },
   {
-    path:'/:itemId' , element:<RecipieDetails/>
+    path:'/restaurant/:id' , element:<RestaurantReview/>
   }
 
 ]);
