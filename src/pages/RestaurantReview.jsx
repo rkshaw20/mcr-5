@@ -41,7 +41,6 @@ const RestaurantReview = () => {
   const selectedRestaurant = restaurantsData.find(
     restaurant => restaurant.id === +restaurantIdFromParam
   );
-  console.log(selectedRestaurant);
 
   const handleInput = e => {
     setInputValue(prev => ({
@@ -50,13 +49,12 @@ const RestaurantReview = () => {
         e.target.name === 'rating' ? Number(e.target.value) : e.target.value,
     }));
   };
-  console.log(inputValue);
 
   const handleModalSubmit = () => {
-   console.log(inputValue);
+    console.log(inputValue);
     const review = {
-      rating:inputValue.rating,
-      comment:inputValue.comment,
+      rating: inputValue.rating,
+      comment: inputValue.comment,
       revName: 'Raj',
       pp: 'https://res.cloudinary.com/dn5zs5sqx/image/upload/v1687185484/FhNGqSr__400x400_fnkcno.jpg',
     };
@@ -67,11 +65,18 @@ const RestaurantReview = () => {
   };
 
   return (
-    <Flex mt={4} m={2} w="full" h="full" flexDir="column">
+    <Flex
+      mt={4}
+      m={2}
+      w="full"
+      h="full"
+      flexDir="column"
+      justifyContent="center"
+    >
       <Link as={ReachLink} to="/">
         <Icon as={BiArrowBack} fontSize="3xl" />
       </Link>
-      <Flex alignItems="center" w="full">
+      <Flex alignItems="center">
         <Flex flexDir="column">
           <Heading>{selectedRestaurant.name}</Heading>
           <Flex gap={4}>
@@ -131,9 +136,9 @@ const RestaurantReview = () => {
       <Flex flexDir="column" mt="1rem">
         <Text fontWeight="bold">Reviews</Text>
         <Flex flexDir="column" maxW="600px" gap={4}>
-          {selectedRestaurant.ratings.map(rating => {
+          {selectedRestaurant.ratings.map((rating, i) => {
             return (
-              <Flex justifyContent="space-between">
+              <Flex justifyContent="space-between" key={i}>
                 <Flex flexDir="column">
                   <Flex gap={2}>
                     <Avatar src={rating.pp} name={rating.revName} />
