@@ -50,13 +50,15 @@ const RestaurantReview = () => {
         e.target.name === 'rating' ? Number(e.target.value) : e.target.value,
     }));
   };
+  console.log(inputValue);
 
   const handleModalSubmit = () => {
-console.log(inputValue);
+   console.log(inputValue);
     const review = {
-      ...inputValue,
+      rating:inputValue.rating,
+      comment:inputValue.comment,
       revName: 'Raj',
-      pp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5tbKdv1HDbAjPc526SK0yDZuoOmaaOyGNoj_e1q3ngruK2bTqzub3&s=0',
+      pp: 'https://res.cloudinary.com/dn5zs5sqx/image/upload/v1687185484/FhNGqSr__400x400_fnkcno.jpg',
     };
 
     selectedRestaurant.ratings.push(review);
@@ -96,7 +98,6 @@ console.log(inputValue);
         <ModalContent>
           <ModalHeader>Add Your Review</ModalHeader>
           <ModalCloseButton />
-          {/* <form onSubmit={()=>handleFormSubmit()} > */}
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Rating</FormLabel>
@@ -115,7 +116,7 @@ console.log(inputValue);
 
             <FormControl mt={4}>
               <FormLabel>Comments</FormLabel>
-              <Input name="comments" onChange={handleInput} />
+              <Input name="comment" onChange={handleInput} />
             </FormControl>
           </ModalBody>
 
@@ -123,9 +124,7 @@ console.log(inputValue);
             <Button colorScheme="blue" mr={3} onClick={handleModalSubmit}>
               Submit
             </Button>
-            {/* <Button onClick={onClose}>Cancel</Button> */}
           </ModalFooter>
-          {/* </form> */}
         </ModalContent>
       </Modal>
 
